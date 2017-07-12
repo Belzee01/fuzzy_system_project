@@ -21,13 +21,12 @@ public class Price {
 
         // Set inputs
         fis.setVariable("offer", 5);
-        fis.setVariable("customer", 15);
 
         // Evaluate
         fis.evaluate();
 
         // Show output variable's chart
-        Variable platform = fis.getVariable("platform");
+        Variable platform = fis.getVariable("price_tag");
         JFuzzyChart.get().chart(platform, platform.getDefuzzifier(), true);
 
         value = platform.getValue();

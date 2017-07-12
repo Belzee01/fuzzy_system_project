@@ -3,30 +3,23 @@ FUNCTION_BLOCK platform
 
 VAR_INPUT
     offer : REAL;
-    customer : REAL;
 END_VAR
 
 VAR_OUTPUT
-    platform : REAL;
+    price_tag : REAL;
 END_VAR
 
 FUZZIFY offer
-    TERM pc := (0,0) (5,1) (10,0);
-	TERM ps := (10,0) (15,1) (20,0);
-	TERM xbox := (20,0) (25,1) (30,0);
+    TERM cheap := (0,0) (5,1) (10,0);
+	TERM average := (10,0) (15,1) (20,0);
+	TERM expensive := (20,0) (25,1) (30,0);
 END_FUZZIFY
 
-FUZZIFY customer
-    TERM pc := (0,0) (5,1) (10,0);
-	TERM ps := (10,0) (15,1) (20,0);
-	TERM xbox := (20,0) (25,1) (30,0);
-END_FUZZIFY
-
-DEFUZZIFY platform
+DEFUZZIFY price_tag
     TERM none := (0,0);
-	TERM pc := (0,0) (5,1) (10,0);
-	TERM ps := (10,0) (15,1) (20,0);
-	TERM xbox := (20,0) (25,1) (30,0);
+	TERM bad := (0,0) (5,1) (10,0);
+	TERM good := (10,0) (15,1) (20,0);
+	TERM great := (20,0) (25,1) (30,0);
 	METHOD : COG;
 	DEFAULT := 0;
 END_DEFUZZIFY
@@ -36,15 +29,9 @@ RULEBLOCK No1
 	ACT : MIN;			// Use 'min' activation method
 	ACCU : MAX;			// Use 'max' accumulation method
 
-	RULE 1 : IF offer IS pc and customer IS pc THEN platform IS pc;
-	RULE 2 : IF offer IS pc and customer IS ps THEN platform IS none;
-	RULE 3 : IF offer IS pc and customer IS xbox THEN platform IS none;
-	RULE 4 : IF offer IS ps and customer IS ps THEN platform IS ps;
-    RULE 5 : IF offer IS ps and customer IS pc THEN platform IS none;
-    RULE 6 : IF offer IS ps and customer IS xbox THEN platform IS none;
-    RULE 7 : IF offer IS xbox and customer IS xbox THEN platform IS xbox;
-    RULE 8 : IF offer IS xbox and customer IS ps THEN platform IS none;
-    RULE 9 : IF offer IS xbox and customer IS pc THEN platform IS none;
+	RULE 1 : IF offer IS cheap THEN price_tag IS great;
+	RULE 2 : IF offer IS average THEN price_tag IS good;
+	RULE 3 : IF offer IS expensive THEN price_tag IS bad;
 
 END_RULEBLOCK
 

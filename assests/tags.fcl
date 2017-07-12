@@ -1,0 +1,54 @@
+
+FUNCTION_BLOCK platform
+
+VAR_INPUT
+    offer : REAL;
+END_VAR
+
+VAR_OUTPUT
+    tags : REAL;
+END_VAR
+
+FUZZIFY offer
+    TERM rpg := (0,0) (5,1) (10,0);
+	TERM action := (10,0) (15,1) (20,0);
+	TERM horror := (20,0) (25,1) (30,0);
+	TERM adventure := (30,0) (35,1) (40,0);
+	TERM scifi := (40,0) (45,1) (50,0);
+	TERM fantasy := (50,0) (55,1) (60,0);
+	TERM fps := (60,0) (65,1) (70,0);
+END_FUZZIFY
+
+FUZZIFY customer
+    TERM rpg := (0,0) (5,1) (10,0);
+	TERM action := (10,0) (15,1) (20,0);
+	TERM horror := (20,0) (25,1) (30,0);
+	TERM adventure := (30,0) (35,1) (40,0);
+	TERM scifi := (40,0) (45,1) (50,0);
+	TERM fantasy := (50,0) (55,1) (60,0);
+	TERM fps := (60,0) (65,1) (70,0);
+END_FUZZIFY
+
+DEFUZZIFY tags
+    TERM none := (0,0) (5,1) (10,0);
+    TERM very_bad := (10,0) (15,1) (20,0);
+    TERM bad := (20,0) (25,1) (30,0);
+    TERM average := (30,0) (35,1) (40,0);
+    TERM good := (40,0) (45,1) (50,0);
+    TERM very_good := (50,0) (55,1) (60,0);
+    TERM perfect := (60,0) (65,1) (70,0);
+	METHOD : COG;
+	DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+	AND : MIN;			// Use 'min' for 'and' (also implicit use 'max' for 'or' to fulfill DeMorgan's Law)
+	ACT : MIN;			// Use 'min' activation method
+	ACCU : MAX;			// Use 'max' accumulation method
+
+	RULE 1 : IF offer IS cheap THEN price_tag IS great;
+	// 49 rules
+
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
