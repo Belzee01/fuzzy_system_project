@@ -18,36 +18,16 @@ public class Game implements Comparable<Game> {
         this.value = 0.0;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public Double getPrice() {
         return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
     }
 
     public List<String> getPlatforms() {
         return platforms;
     }
 
-    public void setPlatforms(List<String> platforms) {
-        this.platforms = platforms;
-    }
-
     public List<String> getTags() {
         return tags;
-    }
-
-    public void setTags(List<String> tags) {
-        this.tags = tags;
     }
 
     public Double getValue() {

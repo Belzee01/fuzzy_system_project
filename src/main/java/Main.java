@@ -1,5 +1,4 @@
 import evalutor.FuzzyEvaluator;
-import processes.Platform;
 
 import java.io.IOException;
 

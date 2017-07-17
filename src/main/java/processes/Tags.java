@@ -1,7 +1,6 @@
 package processes;
 
 import net.sourceforge.jFuzzyLogic.FIS;
-import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
 import net.sourceforge.jFuzzyLogic.rule.Variable;
 
 public class Tags {
@@ -45,9 +44,6 @@ public class Tags {
         if (fis == null)
             throw new IllegalArgumentException("Can't load file: '" + fileName + "'");
 
-        // Show
-//        JFuzzyChart.get().chart(fis);
-
         // Set inputs
         fis.setVariable("offer", evaluateTag(offer));
         fis.setVariable("customer", evaluateTag(customer));
@@ -55,9 +51,7 @@ public class Tags {
         // Evaluate
         fis.evaluate();
 
-        // Show output variable's chart
         Variable platform = fis.getVariable("tags");
-//        JFuzzyChart.get().chart(platform, platform.getDefuzzifier(), true);
 
         return platform.getValue();
     }
