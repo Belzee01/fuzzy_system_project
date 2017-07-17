@@ -3,6 +3,7 @@ FUNCTION_BLOCK platform
 
 VAR_INPUT
     offer : REAL;
+    customer : REAL;
 END_VAR
 
 VAR_OUTPUT

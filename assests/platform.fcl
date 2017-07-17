@@ -24,9 +24,7 @@ END_FUZZIFY
 
 DEFUZZIFY platform
     TERM none := (0,0);
-	TERM pc := (0,0) (5,1) (10,0);
-	TERM ps := (10,0) (15,1) (20,0);
-	TERM xbox := (20,0) (25,1) (30,0);
+	TERM ok := (0,0) (5,1) (10,0);
 	METHOD : COG;
 	DEFAULT := 0;
 END_DEFUZZIFY
@@ -36,13 +34,13 @@ RULEBLOCK No1
 	ACT : MIN;			// Use 'min' activation method
 	ACCU : MAX;			// Use 'max' accumulation method
 
-	RULE 1 : IF offer IS pc and customer IS pc THEN platform IS pc;
+	RULE 1 : IF offer IS pc and customer IS pc THEN platform IS ok;
 	RULE 2 : IF offer IS pc and customer IS ps THEN platform IS none;
 	RULE 3 : IF offer IS pc and customer IS xbox THEN platform IS none;
-	RULE 4 : IF offer IS ps and customer IS ps THEN platform IS ps;
+	RULE 4 : IF offer IS ps and customer IS ps THEN platform IS ok;
     RULE 5 : IF offer IS ps and customer IS pc THEN platform IS none;
     RULE 6 : IF offer IS ps and customer IS xbox THEN platform IS none;
-    RULE 7 : IF offer IS xbox and customer IS xbox THEN platform IS xbox;
+    RULE 7 : IF offer IS xbox and customer IS xbox THEN platform IS ok;
     RULE 8 : IF offer IS xbox and customer IS ps THEN platform IS none;
     RULE 9 : IF offer IS xbox and customer IS pc THEN platform IS none;
 

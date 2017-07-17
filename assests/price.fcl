@@ -3,6 +3,7 @@ FUNCTION_BLOCK platform
 
 VAR_INPUT
     offer : REAL;
+    customer : REAL;
 END_VAR
 
 VAR_OUTPUT
@@ -10,13 +11,18 @@ VAR_OUTPUT
 END_VAR
 
 FUZZIFY offer
-    TERM cheap := (0,0) (5,1) (10,0);
-	TERM average := (10,0) (15,1) (20,0);
-	TERM expensive := (20,0) (25,1) (30,0);
+    TERM cheap := (0,0) (50,1) (100,0);
+	TERM average := (100,0) (150,1) (200,0);
+	TERM expensive := (200,0) (250,1) (300,0);
+END_FUZZIFY
+
+FUZZIFY customer
+    TERM cheap := (0,0) (50,1) (100,0);
+	TERM average := (100,0) (150,1) (200,0);
+	TERM expensive := (200,0) (250,1) (300,0);
 END_FUZZIFY
 
 DEFUZZIFY price_tag
-    TERM none := (0,0);
 	TERM bad := (0,0) (5,1) (10,0);
 	TERM good := (10,0) (15,1) (20,0);
 	TERM great := (20,0) (25,1) (30,0);
@@ -29,9 +35,17 @@ RULEBLOCK No1
 	ACT : MIN;			// Use 'min' activation method
 	ACCU : MAX;			// Use 'max' accumulation method
 
-	RULE 1 : IF offer IS cheap THEN price_tag IS great;
-	RULE 2 : IF offer IS average THEN price_tag IS good;
-	RULE 3 : IF offer IS expensive THEN price_tag IS bad;
+	RULE 1 : IF offer IS cheap AND customer cheap IS THEN price_tag IS good;
+	RULE 2 : IF offer IS cheap AND customer average IS THEN price_tag IS great;
+	RULE 3 : IF offer IS cheap AND customer expensive IS THEN price_tag IS great;
+
+	RULE 4 : IF offer IS average AND customer cheap IS THEN price_tag IS bad;
+    RULE 5 : IF offer IS average AND customer average IS THEN price_tag IS good;
+    RULE 6 : IF offer IS average AND customer expensive IS THEN price_tag IS great;
+
+    RULE 7 : IF offer IS expensive AND customer cheap IS THEN price_tag IS bad;
+    RULE 8 : IF offer IS expensive AND customer average IS THEN price_tag IS bad;
+    RULE 9 : IF offer IS expensive AND customer expensive IS THEN price_tag IS good;
 
 END_RULEBLOCK
 
