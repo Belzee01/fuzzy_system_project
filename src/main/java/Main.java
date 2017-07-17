@@ -1,5 +1,6 @@
 import dto.Game;
 import fileproc.AdvancedFileReader;
+import processes.Price;
 
 import java.util.List;
 
@@ -10,5 +11,7 @@ public class Main {
         List<Game> games = reader.readAndMapToObject();
 
         System.out.println(games.toString());
+
+        Price.process(200, 100);
     }
 }

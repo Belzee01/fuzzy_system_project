@@ -8,7 +8,14 @@ public class Price {
 
     private static Double value = 0.0;
 
-    public static void process() {
+    /**
+     * Price needs to be done in refrence to http://home.agh.edu.pl/~golunska/wp-content/uploads/2017/06/W3.pdf
+     * page 36
+     * @param offer
+     * @param customer
+     */
+
+    public static void process(Integer offer, Integer customer) {
         final String fileName = "assests/price.fcl";
         FIS fis = FIS.load(fileName, true);
 
@@ -20,7 +27,8 @@ public class Price {
         JFuzzyChart.get().chart(fis);
 
         // Set inputs
-        fis.setVariable("offer", 5);
+        fis.setVariable("offer", offer);
+        fis.setVariable("customer", customer);
 
         // Evaluate
         fis.evaluate();
