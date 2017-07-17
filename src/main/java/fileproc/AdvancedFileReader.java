@@ -29,8 +29,8 @@ public class AdvancedFileReader {
                         new Game(
                                 fields[0],
                                 Double.valueOf(fields[1]),
-                                Arrays.asList(fields[2].split(",")),
-                                Arrays.asList(fields[3].split(","))
+                                Arrays.asList(fields[2].toLowerCase().split(",")),
+                                Arrays.asList(fields[3].toLowerCase().split(","))
                         )
 
                 );

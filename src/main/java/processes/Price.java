@@ -2,10 +2,10 @@ package processes;
 
 public class Price {
 
-    public static double process(Integer offer, Integer customer) {
+    public static double process(Double offer, Double customer) {
 
         double absoluteDiff = Math.abs(
-                ((double)(customer - offer) / customer) * 100.0
+                ((customer - offer) / customer) * 100.0
         );
 
         if (customer > offer)

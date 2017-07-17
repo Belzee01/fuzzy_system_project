@@ -6,9 +6,7 @@ import net.sourceforge.jFuzzyLogic.rule.Variable;
 
 public class Platform {
 
-    private static Double value = 0.0;
-
-    public static void process(String offer, String customer) {
+    public static Double process(String offer, String customer) {
         final String fileName = "assests/platform.fcl";
         FIS fis = FIS.load(fileName, true);
 
@@ -17,7 +15,7 @@ public class Platform {
             throw new IllegalArgumentException("Can't load file: '" + fileName + "'");
 
         // Show
-        JFuzzyChart.get().chart(fis);
+//        JFuzzyChart.get().chart(fis);
 
         // Set inputs
         fis.setVariable("offer", evaluatePlatform(offer));
@@ -28,12 +26,9 @@ public class Platform {
 
         // Show output variable's chart
         Variable platform = fis.getVariable("platform");
-        JFuzzyChart.get().chart(platform, platform.getDefuzzifier(), true);
+//        JFuzzyChart.get().chart(platform, platform.getDefuzzifier(), true);
 
-        value = platform.getValue();
-
-        // Print ruleSet
-        System.out.println(fis);
+        return platform.getValue();
     }
 
     private static Integer evaluatePlatform(String platform) {
@@ -44,9 +39,5 @@ public class Platform {
         if (platform.equals("xbox"))
             return 25;
         return 5;
-    }
-
-    public static Double getValue() {
-        return value;
     }
 }

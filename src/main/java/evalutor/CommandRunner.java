@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class CommandRunner {
 
     public static Integer amountOfRecords = 0;
-    public static Integer priceRange = 0;
+    public static Double priceRange = 0.0;
     public static List<String> platformList = new ArrayList<>();
     public static List<String> tagList = new ArrayList<>();
 
@@ -17,7 +17,7 @@ public class CommandRunner {
 
     public static void process() throws IOException {
         System.out.println("Podaj cene w zakresie ktorej poszukujemy gry: ");
-        priceRange = reader.nextInt();
+        priceRange = reader.nextDouble();
         reader.nextLine();
 
         System.out.println("Podaj platformy na ktore poszukujesz gry: ");

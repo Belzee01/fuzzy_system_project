@@ -2,17 +2,20 @@ package dto;
 
 import java.util.List;
 
-public class Game {
+public class Game implements Comparable<Game> {
     private String title;
     private Double price;
     private List<String> platforms;
     private List<String> tags;
+
+    private Double value;
 
     public Game(String title, Double price, List<String> platforms, List<String> tags) {
         this.title = title;
         this.price = price;
         this.platforms = platforms;
         this.tags = tags;
+        this.value = 0.0;
     }
 
     public String getTitle() {
@@ -47,14 +50,28 @@ public class Game {
         this.tags = tags;
     }
 
+    public Double getValue() {
+        return value;
+    }
+
+    public Game setValue(Double value) {
+        this.value = value;
+        return this;
+    }
+
     @Override
     public String toString() {
-        return "Game{" +
-                "title='" + title + '\'' +
+        return "Game{" + " value: " + value +
+                ", title='" + title + '\'' +
                 ", price=" + price +
                 ", platforms=" + platforms +
                 ", tags=" + tags +
-                '}' + "\n";
+                '}';
+    }
+
+    @Override
+    public int compareTo(Game o) {
+        return value.compareTo(o.getValue());
     }
 }
 

@@ -6,8 +6,6 @@ import net.sourceforge.jFuzzyLogic.rule.Variable;
 
 public class Tags {
 
-    private static Double value = 0.0;
-
     /**
      * rpg - 5
      * action - 15
@@ -17,7 +15,29 @@ public class Tags {
      * fantasy - 55
      * fps - 65
      */
-    public static void process() {
+
+    private static Integer evaluateTag(String tag) {
+        switch (tag) {
+            case "rpg":
+                return 5;
+            case "action":
+                return 15;
+            case "horror":
+                return 25;
+            case "adventure":
+                return 35;
+            case "scifi":
+                return 45;
+            case "fantasy":
+                return 55;
+            case "fps":
+                return 65;
+            default:
+                return 5;
+        }
+    }
+
+    public static Double process(String offer, String customer) {
         final String fileName = "assests/tags.fcl";
         FIS fis = FIS.load(fileName, true);
 
@@ -26,27 +46,19 @@ public class Tags {
             throw new IllegalArgumentException("Can't load file: '" + fileName + "'");
 
         // Show
-        JFuzzyChart.get().chart(fis);
+//        JFuzzyChart.get().chart(fis);
 
         // Set inputs
-        fis.setVariable("offer", 65);
-        fis.setVariable("customer", 45);
+        fis.setVariable("offer", evaluateTag(offer));
+        fis.setVariable("customer", evaluateTag(customer));
 
         // Evaluate
         fis.evaluate();
 
         // Show output variable's chart
         Variable platform = fis.getVariable("tags");
-        JFuzzyChart.get().chart(platform, platform.getDefuzzifier(), true);
+//        JFuzzyChart.get().chart(platform, platform.getDefuzzifier(), true);
 
-        value = platform.getValue();
-
-        // Print ruleSet
-        System.out.println(fis);
+        return platform.getValue();
     }
-
-    public static Double getValue() {
-        return value;
-    }
-
 }
