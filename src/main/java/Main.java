@@ -12,6 +12,6 @@ public class Main {
 
         System.out.println(games.toString());
 
-        Price.process(200, 100);
+        System.out.println(Price.process(120, 95));
     }
 }

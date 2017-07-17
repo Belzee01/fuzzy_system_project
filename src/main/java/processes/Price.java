@@ -11,36 +11,27 @@ public class Price {
     /**
      * Price needs to be done in refrence to http://home.agh.edu.pl/~golunska/wp-content/uploads/2017/06/W3.pdf
      * page 36
+     *
      * @param offer
      * @param customer
      */
 
-    public static void process(Integer offer, Integer customer) {
-        final String fileName = "assests/price.fcl";
-        FIS fis = FIS.load(fileName, true);
+    public static double process(Integer offer, Integer customer) {
 
-        // Error while loading?
-        if (fis == null)
-            throw new IllegalArgumentException("Can't load file: '" + fileName + "'");
+        double absoluteDiff = Math.abs(
+                ((double)(customer - offer) / customer) * 100.0
+        );
 
-        // Show
-        JFuzzyChart.get().chart(fis);
+        if (customer > offer)
+            return 1.0;
 
-        // Set inputs
-        fis.setVariable("offer", offer);
-        fis.setVariable("customer", customer);
-
-        // Evaluate
-        fis.evaluate();
-
-        // Show output variable's chart
-        Variable platform = fis.getVariable("price_tag");
-        JFuzzyChart.get().chart(platform, platform.getDefuzzifier(), true);
-
-        value = platform.getValue();
-
-        // Print ruleSet
-        System.out.println(fis);
+        if (absoluteDiff > 30) {
+            return 0.0;
+        } else if (absoluteDiff <= 30 && absoluteDiff >= 3) {
+            return ((30 - absoluteDiff)/(27));
+        } else {
+            return 1.0;
+        }
     }
 
     public static Double getValue() {
