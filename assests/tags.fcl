@@ -47,8 +47,61 @@ RULEBLOCK No1
 	ACT : MIN;			// Use 'min' activation method
 	ACCU : MAX;			// Use 'max' accumulation method
 
-	RULE 1 : IF offer IS cheap THEN price_tag IS great;
-	// 49 rules
+	RULE 1 : IF offer IS rpg AND customer IS rpg THEN tags IS perfect;
+	RULE 2 : IF offer IS rpg AND customer IS action THEN tags IS good;
+	RULE 3 : IF offer IS rpg AND customer IS horror THEN tags IS bad;
+	RULE 4 : IF offer IS rpg AND customer IS adventure THEN tags IS good;
+	RULE 5 : IF offer IS rpg AND customer IS scifi THEN tags IS average;
+	RULE 6 : IF offer IS rpg AND customer IS fantasy THEN tags IS very_good;
+	RULE 7 : IF offer IS rpg AND customer IS fps THEN tags IS none;
+
+	RULE 8 : IF offer IS action AND customer IS rpg THEN tags IS good;
+    RULE 9 : IF offer IS action AND customer IS action THEN tags IS perfect;
+    RULE 10 : IF offer IS action AND customer IS horror THEN tags IS very_good;
+    RULE 11 : IF offer IS action AND customer IS adventure THEN tags IS good;
+    RULE 12 : IF offer IS action AND customer IS scifi THEN tags IS very_good;
+    RULE 13 : IF offer IS action AND customer IS fantasy THEN tags IS very_bad;
+    RULE 14 : IF offer IS action AND customer IS fps THEN tags IS very_good;
+
+	RULE 15 : IF offer IS horror AND customer IS rpg THEN tags IS bad;
+    RULE 16 : IF offer IS horror AND customer IS action THEN tags IS very_good;
+    RULE 17 : IF offer IS horror AND customer IS horror THEN tags IS perfect;
+    RULE 18 : IF offer IS horror AND customer IS adventure THEN tags IS average;
+    RULE 19 : IF offer IS horror AND customer IS scifi THEN tags IS good;
+    RULE 20 : IF offer IS horror AND customer IS fantasy THEN tags IS very_bad;
+    RULE 21 : IF offer IS horror AND customer IS fps THEN tags IS average;
+
+    RULE 22 : IF offer IS adventure AND customer IS rpg THEN tags IS good;
+    RULE 23 : IF offer IS adventure AND customer IS action THEN tags IS good;
+    RULE 24 : IF offer IS adventure AND customer IS horror THEN tags IS average;
+    RULE 25 : IF offer IS adventure AND customer IS adventure THEN tags IS perfect;
+    RULE 26 : IF offer IS adventure AND customer IS scifi THEN tags IS average;
+    RULE 27 : IF offer IS adventure AND customer IS fantasy THEN tags IS good;
+    RULE 28 : IF offer IS adventure AND customer IS fps THEN tags IS bad;
+
+	RULE 29 : IF offer IS scifi AND customer IS rpg THEN tags IS average;
+    RULE 30 : IF offer IS scifi AND customer IS action THEN tags IS very_good;
+    RULE 31 : IF offer IS scifi AND customer IS horror THEN tags IS good;
+    RULE 32 : IF offer IS scifi AND customer IS adventure THEN tags IS average;
+    RULE 33 : IF offer IS scifi AND customer IS scifi THEN tags IS perfect;
+    RULE 34 : IF offer IS scifi AND customer IS fantasy THEN tags IS none;
+    RULE 35 : IF offer IS scifi AND customer IS fps THEN tags IS very_good;
+
+	RULE 36 : IF offer IS fantasy AND customer IS rpg THEN tags IS very_good;
+    RULE 37 : IF offer IS fantasy AND customer IS action THEN tags IS very_bad;
+    RULE 38 : IF offer IS fantasy AND customer IS horror THEN tags IS very_bad;
+    RULE 39 : IF offer IS fantasy AND customer IS adventure THEN tags IS good;
+    RULE 40 : IF offer IS fantasy AND customer IS scifi THEN tags IS none;
+    RULE 41 : IF offer IS fantasy AND customer IS fantasy THEN tags IS perfect;
+    RULE 42 : IF offer IS fantasy AND customer IS fps THEN tags IS none;
+
+	RULE 43 : IF offer IS fps AND customer IS rpg THEN tags IS none;
+    RULE 44 : IF offer IS fps AND customer IS action THEN tags IS very_good;
+    RULE 45 : IF offer IS fps AND customer IS horror THEN tags IS average;
+    RULE 46 : IF offer IS fps AND customer IS adventure THEN tags IS bad;
+    RULE 47 : IF offer IS fps AND customer IS scifi THEN tags IS very_good;
+    RULE 48 : IF offer IS fps AND customer IS fantasy THEN tags IS none;
+    RULE 49 : IF offer IS fps AND customer IS fps THEN tags IS perfect;
 
 END_RULEBLOCK
 

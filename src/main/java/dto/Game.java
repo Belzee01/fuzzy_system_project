@@ -46,5 +46,15 @@ public class Game {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                ", platforms=" + platforms +
+                ", tags=" + tags +
+                '}' + "\n";
+    }
 }
 

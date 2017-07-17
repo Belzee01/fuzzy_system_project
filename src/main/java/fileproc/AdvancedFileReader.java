@@ -17,7 +17,7 @@ public class AdvancedFileReader {
         this.filename = filename;
     }
 
-    public List readAndMapToObject() {
+    public List<Game> readAndMapToObject() {
         List<Game> mappedObjects = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(this.filename))) {
 
