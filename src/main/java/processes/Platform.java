@@ -8,7 +8,7 @@ public class Platform {
 
     private static Double value = 0.0;
 
-    public static void process() {
+    public static void process(String offer, String customer) {
         final String fileName = "assests/platform.fcl";
         FIS fis = FIS.load(fileName, true);
 
@@ -20,8 +20,8 @@ public class Platform {
         JFuzzyChart.get().chart(fis);
 
         // Set inputs
-        fis.setVariable("offer", 5);
-        fis.setVariable("customer", 15);
+        fis.setVariable("offer", evaluatePlatform(offer));
+        fis.setVariable("customer", evaluatePlatform(customer));
 
         // Evaluate
         fis.evaluate();
@@ -34,6 +34,16 @@ public class Platform {
 
         // Print ruleSet
         System.out.println(fis);
+    }
+
+    private static Integer evaluatePlatform(String platform) {
+        if (platform.equals("pc"))
+            return 5;
+        if (platform.equals("ps"))
+            return 15;
+        if (platform.equals("xbox"))
+            return 25;
+        return 5;
     }
 
     public static Double getValue() {

@@ -24,7 +24,7 @@ END_FUZZIFY
 
 DEFUZZIFY platform
     TERM none := (0,0);
-	TERM ok := (0,0) (5,1) (10,0);
+	TERM ok := (0,0) (1,1) (2,0);
 	METHOD : COG;
 	DEFAULT := 0;
 END_DEFUZZIFY
