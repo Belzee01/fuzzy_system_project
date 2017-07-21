@@ -5,7 +5,7 @@ import java.util.List;
 public class Game implements Comparable<Game> {
     private String title;
     private Double price;
-    private List<String> platforms;
+    private Platforms platforms;
     private List<String> tags;
 
     private Double value;
@@ -13,7 +13,8 @@ public class Game implements Comparable<Game> {
     public Game(String title, Double price, List<String> platforms, List<String> tags) {
         this.title = title;
         this.price = price;
-        this.platforms = platforms;
+        this.platforms = new Platforms();
+        this.platforms.assign(platforms);
         this.tags = tags;
         this.value = 0.0;
     }
@@ -22,7 +23,7 @@ public class Game implements Comparable<Game> {
         return price;
     }
 
-    public List<String> getPlatforms() {
+    public Platforms getPlatforms() {
         return platforms;
     }
 
@@ -44,7 +45,7 @@ public class Game implements Comparable<Game> {
         return "Game{" + " value: " + value +
                 ", title='" + title + '\'' +
                 ", price=" + price +
-                ", platforms=" + platforms +
+                ", platforms=" + platforms.toString() +
                 ", tags=" + tags +
                 '}';
     }
