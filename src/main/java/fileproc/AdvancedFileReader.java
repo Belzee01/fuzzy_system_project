@@ -25,15 +25,17 @@ public class AdvancedFileReader {
 
             while ((sCurrentLine = br.readLine()) != null) {
                 String[] fields = sCurrentLine.split(";");
-                mappedObjects.add(
-                        new Game(
-                                fields[0],
-                                Double.valueOf(fields[1]),
-                                Arrays.asList(fields[2].toLowerCase().split(",")),
-                                Arrays.asList(fields[3].toLowerCase().split(","))
-                        )
-
-                );
+                try {
+                    Game game = new Game(
+                            fields[0],
+                            Double.valueOf(fields[1]),
+                            Arrays.asList(fields[2].toLowerCase().split(",")),
+                            Arrays.asList(fields[3].toLowerCase().split(","))
+                    );
+                    mappedObjects.add(game);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
             }
 
         } catch (IOException e) {

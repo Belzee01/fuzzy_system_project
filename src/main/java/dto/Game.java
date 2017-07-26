@@ -6,16 +6,17 @@ public class Game implements Comparable<Game> {
     private String title;
     private Double price;
     private Platforms platforms;
-    private List<String> tags;
+    private Tags tags;
 
     private Double value;
 
-    public Game(String title, Double price, List<String> platforms, List<String> tags) {
+    public Game(String title, Double price, List<String> platforms, List<String> tags) throws IllegalArgumentException {
         this.title = title;
         this.price = price;
         this.platforms = new Platforms();
         this.platforms.assign(platforms);
-        this.tags = tags;
+        this.tags = new Tags();
+        this.tags.assign(tags);
         this.value = 0.0;
     }
 
@@ -27,7 +28,7 @@ public class Game implements Comparable<Game> {
         return platforms;
     }
 
-    public List<String> getTags() {
+    public Tags getTags() {
         return tags;
     }
 
@@ -46,7 +47,7 @@ public class Game implements Comparable<Game> {
                 ", title='" + title + '\'' +
                 ", price=" + price +
                 ", platforms=" + platforms.toString() +
-                ", tags=" + tags +
+                ", tags=" + tags.toString() +
                 '}';
     }
 

@@ -29,8 +29,11 @@ public class Platforms {
                 '}';
     }
 
-    public void assign(List<String> platforms) {
+    public void assign(List<String> platforms) throws IllegalArgumentException {
         platforms.forEach(this::validate);
+
+        if (platform.isEmpty())
+            throw new IllegalArgumentException("Platform list cannot be empty!");
     }
 
     private enum PLATFORMS {

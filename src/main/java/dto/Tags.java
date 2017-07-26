@@ -7,20 +7,22 @@ public class Tags {
     private List<TAGS> tags;
 
     private void validate(String value) {
-        switch (value) {
+        switch (value.toLowerCase()) {
+            case "fps" : tags.add(TAGS.FPS);
+                break;
+            case "racing": tags.add(TAGS.RACING);
+                break;
+            case "rts" : tags.add(TAGS.RTS);
+                break;
             case "rpg" : tags.add(TAGS.RPG);
                 break;
-            case "action": tags.add(TAGS.ACTION);
+            case "sport" : tags.add(TAGS.SPORT);
                 break;
-            case "horror" : tags.add(TAGS.HORROR);
+            case "tactical" : tags.add(TAGS.TACTICAL);
                 break;
-            case "adevnture" : tags.add(TAGS.ADVENTURE);
+            case "adventure" : tags.add(TAGS.ADVENTURE);
                 break;
-            case "scifi" : tags.add(TAGS.SCIFI);
-                break;
-            case "fantasy" : tags.add(TAGS.FANTASY);
-                break;
-            case "fps" : tags.add(TAGS.FPS);
+            case "arcade" : tags.add(TAGS.ARCADE);
                 break;
             default: break;
         }
@@ -33,18 +35,22 @@ public class Tags {
                 '}';
     }
 
-    public void assign(List<String> platforms) {
+    public void assign(List<String> platforms) throws IllegalArgumentException {
         platforms.forEach(this::validate);
+
+        if (tags.isEmpty())
+            throw new IllegalArgumentException("Tag list cannot be empty!");
     }
 
     private enum TAGS {
         RPG("rpg"),
-        ACTION("action"),
-        HORROR("horror"),
-        ADVENTURE("adevnture"),
-        SCIFI("scifi"),
-        FANTASY("fantasy"),
-        FPS("fps");
+        ADVENTURE("adventure"),
+        FPS("fps"),
+        RACING("racing"),
+        RTS("rts"),
+        SPORT("sport"),
+        TACTICAL("tactical"),
+        ARCADE("arcade");
 
 
         private TAGS(String value) {
