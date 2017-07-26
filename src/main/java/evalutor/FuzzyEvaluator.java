@@ -15,8 +15,8 @@ public class FuzzyEvaluator {
 
     private static List<Game> gameByValue = new ArrayList<>();
 
-    public static void process() throws IOException {
-        AdvancedFileReader reader = new AdvancedFileReader("./assests/base.dat");
+    public static void process(final String baseFilePath) throws IOException {
+        AdvancedFileReader reader = new AdvancedFileReader(baseFilePath);
         List<Game> games = reader.readAndMapToObject();
 
         CommandRunner.process();
@@ -26,7 +26,7 @@ public class FuzzyEvaluator {
 
             final double[] multiplier = {0.0};
 
-            g.getPlatforms().forEach(p -> {
+            g.getPlatforms().getPlatform().forEach(p -> {
                 CommandRunner.platformList.forEach(c -> {
                     multiplier[0] += Platform.process(p, c);
                 });
@@ -35,7 +35,7 @@ public class FuzzyEvaluator {
 
             multiplier[0] *= Price.process(g.getPrice(), CommandRunner.priceRange);
 
-            g.getTags().forEach(t -> {
+            g.getTags().getTags().forEach(t -> {
                 CommandRunner.tagList.forEach(tl -> {
                     value[0] += Tags.process(t, tl);
                 });

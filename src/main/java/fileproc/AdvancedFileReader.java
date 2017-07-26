@@ -24,8 +24,11 @@ public class AdvancedFileReader {
             String sCurrentLine;
 
             while ((sCurrentLine = br.readLine()) != null) {
-                String[] fields = sCurrentLine.split(";");
                 try {
+                    String[] fields = sCurrentLine.split(";");
+                    if (fields.length < 4)
+                        throw new IllegalArgumentException("Missing fields in game definition!");
+
                     Game game = new Game(
                             fields[0],
                             Double.valueOf(fields[1]),

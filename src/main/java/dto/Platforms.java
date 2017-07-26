@@ -1,10 +1,15 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Platforms {
 
     private List<PLATFORMS> platform;
+
+    public Platforms() {
+        this.platform = new ArrayList<>();
+    }
 
     private void validate(String value) {
 
@@ -36,7 +41,11 @@ public class Platforms {
             throw new IllegalArgumentException("Platform list cannot be empty!");
     }
 
-    private enum PLATFORMS {
+    public List<PLATFORMS> getPlatform() {
+        return platform;
+    }
+
+    public enum PLATFORMS {
         PC("pc"),
         PS("ps"),
         XBOX("xbox");

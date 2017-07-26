@@ -1,37 +1,51 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tags {
 
     private List<TAGS> tags;
 
+    public Tags() {
+        this.tags = new ArrayList<>();
+    }
+
     private void validate(String value) {
         switch (value.toLowerCase()) {
-            case "fps" : tags.add(TAGS.FPS);
+            case "fps":
+                tags.add(TAGS.FPS);
                 break;
-            case "racing": tags.add(TAGS.RACING);
+            case "racing":
+                tags.add(TAGS.RACING);
                 break;
-            case "rts" : tags.add(TAGS.RTS);
+            case "rts":
+                tags.add(TAGS.RTS);
                 break;
-            case "rpg" : tags.add(TAGS.RPG);
+            case "rpg":
+                tags.add(TAGS.RPG);
                 break;
-            case "sport" : tags.add(TAGS.SPORT);
+            case "sport":
+                tags.add(TAGS.SPORT);
                 break;
-            case "tactical" : tags.add(TAGS.TACTICAL);
+            case "tactical":
+                tags.add(TAGS.TACTICAL);
                 break;
-            case "adventure" : tags.add(TAGS.ADVENTURE);
+            case "adventure":
+                tags.add(TAGS.ADVENTURE);
                 break;
-            case "arcade" : tags.add(TAGS.ARCADE);
+            case "arcade":
+                tags.add(TAGS.ARCADE);
                 break;
-            default: break;
+            default:
+                break;
         }
     }
 
     @Override
     public String toString() {
-        return "Platforms{" +
-                "platform=" + tags +
+        return "Tags{" +
+                "tag=" + tags +
                 '}';
     }
 
@@ -42,7 +56,11 @@ public class Tags {
             throw new IllegalArgumentException("Tag list cannot be empty!");
     }
 
-    private enum TAGS {
+    public List<TAGS> getTags() {
+        return tags;
+    }
+
+    public enum TAGS {
         RPG("rpg"),
         ADVENTURE("adventure"),
         FPS("fps"),
@@ -53,7 +71,7 @@ public class Tags {
         ARCADE("arcade");
 
 
-        private TAGS(String value) {
+        TAGS(String value) {
             this.value = value;
         }
 

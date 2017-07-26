@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            FuzzyEvaluator.process();
+            FuzzyEvaluator.process("./assests/base2.dat");
         } catch (IOException e) {
             e.printStackTrace();
         }

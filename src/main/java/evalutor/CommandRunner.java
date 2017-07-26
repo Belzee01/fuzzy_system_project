@@ -1,5 +1,9 @@
 package evalutor;
 
+import dto.Platforms;
+import dto.Tags;
+import processes.Platform;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,8 +14,11 @@ public class CommandRunner {
 
     public static Integer amountOfRecords = 0;
     public static Double priceRange = 0.0;
-    public static List<String> platformList = new ArrayList<>();
-    public static List<String> tagList = new ArrayList<>();
+    public static List<Platforms.PLATFORMS> platformList = new ArrayList<>();
+    public static List<Tags.TAGS> tagList = new ArrayList<>();
+
+    private static Tags tag = new Tags();
+    private static Platforms platform = new Platforms();
 
     private static Scanner reader = new Scanner(System.in);
 
@@ -22,11 +29,13 @@ public class CommandRunner {
 
         System.out.println("Podaj platformy na ktore poszukujesz gry: ");
         String platforms = reader.nextLine().toLowerCase();
-        platformList.addAll(Arrays.asList(platforms.split(" ")));
+        platform.assign(Arrays.asList(platforms.split(" ")));
+        platformList.addAll(platform.getPlatform());
 
         System.out.println("Podaj tagi dla gier ktore poszukujesz: ");
         String tags = reader.nextLine().toLowerCase();
-        tagList.addAll(Arrays.asList(tags.split(" ")));
+        tag.assign(Arrays.asList(tags.split(" ")));
+        tagList.addAll(tag.getTags());
 
         System.out.println("Podaj ile gier wyswietlic: ");
         amountOfRecords = reader.nextInt();

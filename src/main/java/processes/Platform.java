@@ -1,11 +1,13 @@
 package processes;
 
+import dto.Platforms;
+import dto.Platforms.PLATFORMS;
 import net.sourceforge.jFuzzyLogic.FIS;
 import net.sourceforge.jFuzzyLogic.rule.Variable;
 
 public class Platform {
 
-    public static Double process(String offer, String customer) {
+    public static Double process(PLATFORMS offer, PLATFORMS customer) {
         final String fileName = "assests/platform.fcl";
         FIS fis = FIS.load(fileName, true);
 
@@ -26,12 +28,12 @@ public class Platform {
         return platform.getValue();
     }
 
-    private static Integer evaluatePlatform(String platform) {
-        if (platform.equals("pc"))
+    private static Integer evaluatePlatform(PLATFORMS platform) {
+        if (platform == PLATFORMS.PC)
             return 5;
-        if (platform.equals("ps"))
+        if (platform == PLATFORMS.PS)
             return 15;
-        if (platform.equals("xbox"))
+        if (platform == PLATFORMS.XBOX)
             return 25;
         return 5;
     }

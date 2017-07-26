@@ -1,5 +1,6 @@
 package processes;
 
+import dto.Tags.TAGS;
 import net.sourceforge.jFuzzyLogic.FIS;
 import net.sourceforge.jFuzzyLogic.rule.Variable;
 
@@ -15,28 +16,30 @@ public class Tags {
      * fps - 65
      */
 
-    private static Integer evaluateTag(String tag) {
+    private static Integer evaluateTag(TAGS tag) {
         switch (tag) {
-            case "rpg":
+            case FPS:
                 return 5;
-            case "action":
+            case RACING:
                 return 15;
-            case "horror":
+            case RTS:
                 return 25;
-            case "adventure":
+            case RPG:
                 return 35;
-            case "scifi":
+            case SPORT:
                 return 45;
-            case "fantasy":
+            case TACTICAL:
                 return 55;
-            case "fps":
+            case ADVENTURE:
                 return 65;
+            case ARCADE:
+                return 75;
             default:
                 return 5;
         }
     }
 
-    public static Double process(String offer, String customer) {
+    public static Double process(TAGS offer, TAGS customer) {
         final String fileName = "assests/tags.fcl";
         FIS fis = FIS.load(fileName, true);
 
