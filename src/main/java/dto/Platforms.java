@@ -6,22 +6,20 @@ public class Platforms {
 
     private List<PLATFORMS> platform;
 
-    private boolean validate(String value) {
+    private void validate(String value) {
 
         if (value.toLowerCase().contains("pc")) {
-            this.platform.add(PLATFORMS.PC);
-            return true;
+            if (!platform.contains(PLATFORMS.PC))
+                this.platform.add(PLATFORMS.PC);
         }
         if (value.toLowerCase().contains("ps")) {
-            this.platform.add(PLATFORMS.PS);
-            return true;
+            if (!platform.contains(PLATFORMS.PS))
+                this.platform.add(PLATFORMS.PS);
         }
         if (value.toLowerCase().contains("xbox")) {
-            this.platform.add(PLATFORMS.XBOX);
-            return true;
+            if (!platform.contains(PLATFORMS.XBOX))
+                this.platform.add(PLATFORMS.XBOX);
         }
-
-        return false;
     }
 
     @Override

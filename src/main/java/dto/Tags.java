@@ -6,22 +6,24 @@ public class Tags {
 
     private List<TAGS> tags;
 
-    private boolean validate(String value) {
-
-        if (value.toLowerCase().contains("rpg")) {
-            this.tags.add(TAGS.PC);
-            return true;
+    private void validate(String value) {
+        switch (value) {
+            case "rpg" : tags.add(TAGS.RPG);
+                break;
+            case "action": tags.add(TAGS.ACTION);
+                break;
+            case "horror" : tags.add(TAGS.HORROR);
+                break;
+            case "adevnture" : tags.add(TAGS.ADVENTURE);
+                break;
+            case "scifi" : tags.add(TAGS.SCIFI);
+                break;
+            case "fantasy" : tags.add(TAGS.FANTASY);
+                break;
+            case "fps" : tags.add(TAGS.FPS);
+                break;
+            default: break;
         }
-        if (value.toLowerCase().contains("ps")) {
-            this.tags.add(TAGS.PS);
-            return true;
-        }
-        if (value.toLowerCase().contains("xbox")) {
-            this.tags.add(TAGS.XBOX);
-            return true;
-        }
-
-        return false;
     }
 
     @Override
@@ -36,9 +38,14 @@ public class Tags {
     }
 
     private enum TAGS {
-        PC("pc"),
-        PS("ps"),
-        XBOX("xbox");
+        RPG("rpg"),
+        ACTION("action"),
+        HORROR("horror"),
+        ADVENTURE("adevnture"),
+        SCIFI("scifi"),
+        FANTASY("fantasy"),
+        FPS("fps");
+
 
         private TAGS(String value) {
             this.value = value;
