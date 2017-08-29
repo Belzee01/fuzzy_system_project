@@ -1,0 +1,29 @@
+FUNCTION_BLOCK score
+
+VAR_INPUT
+    offer : REAL;
+    customer : REAL;
+END_VAR
+
+VAR_OUTPUT
+    score : REAL;
+END_VAR
+
+FUZZIFY offer
+    TERM bad := (0,0) (5,1) (10,0);
+	TERM avg := (10,0) (15,1) (20,0);
+	TERM great := (20,0) (25,1) (30,0);
+END_FUZZIFY
+
+FUZZIFY customer
+    TERM bad := (0,0) (5,1) (10,0);
+	TERM avg := (10,0) (15,1) (20,0);
+	TERM great := (20,0) (25,1) (30,0);
+END_FUZZIFY
+
+DEFUZZIFY score
+    TERM none := (0,0);
+	TERM ok := (0,0) (1,1) (2,0);
+	METHOD : COG;
+	DEFAULT := 0;
+END_DEFUZZIFY
