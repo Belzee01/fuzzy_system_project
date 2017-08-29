@@ -14,14 +14,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        try {
-//            FuzzyEvaluator.process("./assests/base2.dat");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
-        injectDataIntoGamesBase();
+        try {
+            FuzzyEvaluator.process("./assests/base2.dat");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void injectDataIntoGamesBase() {
