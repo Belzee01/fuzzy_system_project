@@ -1,5 +1,7 @@
 package dto;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Game implements Comparable<Game> {
@@ -7,6 +9,8 @@ public class Game implements Comparable<Game> {
     private Double price;
     private Platforms platforms;
     private Tags tags;
+    private Integer score;
+    private LocalDate date;
 
     private Double value;
 
@@ -18,6 +22,18 @@ public class Game implements Comparable<Game> {
         this.tags = new Tags();
         this.tags.assign(tags);
         this.value = 0.0;
+    }
+
+    public Game(String title, Double price, List<String> platforms, List<String> tags, Integer score, LocalDate date) throws IllegalArgumentException {
+        this.title = title;
+        this.price = price;
+        this.platforms = new Platforms();
+        this.platforms.assign(platforms);
+        this.tags = new Tags();
+        this.tags.assign(tags);
+        this.value = 0.0;
+        this.score = score;
+        this.date = date;
     }
 
     public Double getPrice() {
@@ -41,14 +57,38 @@ public class Game implements Comparable<Game> {
         return this;
     }
 
+    public Integer getScore() {
+        return score;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
-        return "Game{" + " value: " + value +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                ", platforms=" + platforms.toString() +
-                ", tags=" + tags.toString() +
-                '}';
+        StringBuilder sb = new StringBuilder(this.title + ";");
+
+        sb.append(this.price).append(";");
+
+        this.platforms.getPlatform().forEach(p -> sb.append(p).append(","));
+        sb.append(";");
+
+        this.tags.getTags().forEach(t -> sb.append(t).append(","));
+        sb.append(";");
+
+        sb.append(this.score).append(";");
+        sb.append(this.date).append("\n");
+
+        return sb.toString();
     }
 
     @Override
