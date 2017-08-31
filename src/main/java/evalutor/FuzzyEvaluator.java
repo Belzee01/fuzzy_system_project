@@ -28,7 +28,7 @@ public class FuzzyEvaluator {
 
             g.getPlatforms().getPlatform().forEach(p -> {
                 CommandRunner.platformList.forEach(c -> {
-                    multiplier[0] += Platform.process(p, c);
+                    multiplier[0] += Platform.process(p, c)/3.0;
                 });
             });
 
