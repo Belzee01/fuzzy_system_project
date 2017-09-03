@@ -20,18 +20,4 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-    public static void injectDataIntoGamesBase() {
-        AdvancedFileReader reader = new AdvancedFileReader("./assests/base2.dat");
-        List<Game> games = reader.readAndMapToObject();
-
-        games.forEach(g -> {
-            g.setScore(new Random().nextInt(100));
-            g.setDate(LocalDate.now().minusYears(new Random().nextInt(20)).minusMonths(new Random().nextInt(12)).minusDays(new Random().nextInt(30)));
-        });
-
-        AdvancedFileWriter writer = new AdvancedFileWriter("./assests/base2.dat");
-
-        writer.mapObjectAndWriteToFile(games);
-    }
 }

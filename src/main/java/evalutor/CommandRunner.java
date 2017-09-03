@@ -32,6 +32,7 @@ public class CommandRunner {
         platform.assign(Arrays.asList(platforms.split(" ")));
         platformList.addAll(platform.getPlatform());
 
+        System.out.println("Tagi : [fps, racing, rts, rpg, sport, tactical, adventure, arcade]");
         System.out.println("Podaj tagi dla gier ktore poszukujesz: ");
         String tags = reader.nextLine().toLowerCase();
         tag.assign(Arrays.asList(tags.split(" ")));

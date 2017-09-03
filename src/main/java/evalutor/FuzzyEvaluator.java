@@ -50,5 +50,4 @@ public class FuzzyEvaluator {
             System.out.println(gameByValue.get(i).toString());
         }
     }
-
 }

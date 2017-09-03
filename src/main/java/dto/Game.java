@@ -1,7 +1,6 @@
 package dto;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class Game implements Comparable<Game> {
@@ -88,7 +87,7 @@ public class Game implements Comparable<Game> {
         sb.append(this.score).append(";");
         sb.append(this.date).append("\n");
 
-        return sb.toString();
+        return value + " " + sb.toString();
     }
 
     @Override

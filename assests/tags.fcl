@@ -112,14 +112,14 @@ RULEBLOCK No1
     RULE 55 : IF offer IS adventure AND customer IS adventure THEN tags IS none;
     RULE 56 : IF offer IS adventure AND customer IS arcade THEN tags IS none;
 
-    RULE 57 : IF offer IS arcade AND customer IS fps THEN tags IS perfect;
-    RULE 58 : IF offer IS arcade AND customer IS racing THEN tags IS good;
-    RULE 59 : IF offer IS arcade AND customer IS rts THEN tags IS bad;
-    RULE 60 : IF offer IS arcade AND customer IS rpg THEN tags IS good;
-    RULE 61 : IF offer IS arcade AND customer IS sport THEN tags IS average;
-    RULE 62 : IF offer IS arcade AND customer IS tactical THEN tags IS very_good;
-    RULE 63 : IF offer IS arcade AND customer IS adventure THEN tags IS none;
-    RULE 64 : IF offer IS arcade AND customer IS arcade THEN tags IS none;
+    RULE 57 : IF offer IS arcade AND customer IS fps THEN tags IS none;
+    RULE 58 : IF offer IS arcade AND customer IS racing THEN tags IS average;
+    RULE 59 : IF offer IS arcade AND customer IS rts THEN tags IS good;
+    RULE 60 : IF offer IS arcade AND customer IS rpg THEN tags IS bad;
+    RULE 61 : IF offer IS arcade AND customer IS sport THEN tags IS good;
+    RULE 62 : IF offer IS arcade AND customer IS tactical THEN tags IS bad;
+    RULE 63 : IF offer IS arcade AND customer IS adventure THEN tags IS very_good;
+    RULE 64 : IF offer IS arcade AND customer IS arcade THEN tags IS perfect;
 
 END_RULEBLOCK
 
