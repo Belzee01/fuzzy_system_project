@@ -5,6 +5,7 @@ import dto.Game;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,9 @@ public class AdvancedFileReader {
                             fields[0],
                             Double.valueOf(fields[1]),
                             Arrays.asList(fields[2].toLowerCase().split(",")),
-                            Arrays.asList(fields[3].toLowerCase().split(","))
+                            Arrays.asList(fields[3].toLowerCase().split(",")),
+                            Integer.valueOf(fields[4]),
+                            LocalDate.parse(fields[5])
                     );
                     mappedObjects.add(game);
                 } catch (IllegalArgumentException e) {
