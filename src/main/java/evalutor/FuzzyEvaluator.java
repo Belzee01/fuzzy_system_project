@@ -2,10 +2,12 @@ package evalutor;
 
 import dto.Game;
 import fileproc.AdvancedFileReader;
+import processes.Date;
 import processes.Platform;
 import processes.Price;
 import processes.Tags;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,6 +42,8 @@ public class FuzzyEvaluator {
                     value[0] += Tags.process(t, tl);
                 });
             });
+
+            multiplier[0] *= Date.process(g.getDate(), CommandRunner.date);
 
             gameByValue.add(g.setValue(multiplier[0] * value[0]));
         });

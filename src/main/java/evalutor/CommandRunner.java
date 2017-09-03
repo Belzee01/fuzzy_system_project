@@ -5,6 +5,7 @@ import dto.Tags;
 import processes.Platform;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ public class CommandRunner {
 
     public static Integer amountOfRecords = 0;
     public static Double priceRange = 0.0;
+    public static LocalDate date = LocalDate.now();
     public static List<Platforms.PLATFORMS> platformList = new ArrayList<>();
     public static List<Tags.TAGS> tagList = new ArrayList<>();
 
@@ -37,6 +39,10 @@ public class CommandRunner {
         String tags = reader.nextLine().toLowerCase();
         tag.assign(Arrays.asList(tags.split(" ")));
         tagList.addAll(tag.getTags());
+
+        System.out.println("Podaj date produkcji dla gier ktore poszukujesz: ");
+        String dateToParse = reader.nextLine().toLowerCase();
+        date = LocalDate.parse(dateToParse);
 
         System.out.println("Podaj ile gier wyswietlic: ");
         amountOfRecords = reader.nextInt();
