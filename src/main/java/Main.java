@@ -12,6 +12,6 @@ public class Main {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        Score.process(0, 100);
+        Score.process(50, 95);
     }
 }
