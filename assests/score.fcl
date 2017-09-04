@@ -34,17 +34,17 @@ RULEBLOCK No1
 	ACT : MIN;	// Use 'min' activation method
 	ACCU : MAX;	// Use 'max' accumulation method
 
-	RULE 1 : IF offer IS bad and customer is bad THEN score IS great;
-	RULE 2 : IF offer IS bad and customer is avg THEN score IS avg;
-	RULE 3 : IF offer IS bad and customer is great THEN score IS bad;
+	RULE 1 : IF customer IS bad and offer is bad THEN score IS great;
+	RULE 2 : IF customer IS bad and offer is avg THEN score IS avg;
+	RULE 3 : IF customer IS bad and offer is great THEN score IS bad;
 
-	RULE 4 : IF offer IS avg and customer is bad THEN score IS bad;
-    RULE 5 : IF offer IS avg and customer is avg THEN score IS great;
-    RULE 6 : IF offer IS avg and customer is great THEN score IS bad;
+	RULE 4 : IF customer IS avg and offer is bad THEN score IS bad;
+    RULE 5 : IF customer IS avg and offer is avg THEN score IS great;
+    RULE 6 : IF customer IS avg and offer is great THEN score IS bad;
 
-    RULE 7 : IF offer IS great and customer is bad THEN score IS bad;
-    RULE 8 : IF offer IS great and customer is avg THEN score IS avg;
-    RULE 9 : IF offer IS great and customer is great THEN score IS great;
+    RULE 7 : IF customer IS great and offer is bad THEN score IS bad;
+    RULE 8 : IF customer IS great and offer is avg THEN score IS avg;
+    RULE 9 : IF customer IS great and offer is great THEN score IS great;
 END_RULEBLOCK
 
 END_FUNCTION_BLOCK
