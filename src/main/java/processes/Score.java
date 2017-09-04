@@ -1,17 +1,30 @@
 package processes;
 
+import net.sourceforge.jFuzzyLogic.FIS;
+import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
+import net.sourceforge.jFuzzyLogic.rule.Variable;
+
 public class Score {
 
     public static double process(Integer offer, Integer customer) {
-        double absoluteDiff = Math.abs(
-                ((customer - offer) / customer) * 100.0
-        );
+        final String fileName = "assests/score.fcl";
+        FIS fis = FIS.load(fileName, true);
 
-        if (customer > offer)
-            return 100.0;
+        // Error while loading?
+        if (fis == null)
+            throw new IllegalArgumentException("Can't load file: '" + fileName + "'");
 
+        // Set inputs
+        fis.setVariable("offer", offer);
+        fis.setVariable("customer", customer);
 
+        // Evaluate
+        fis.evaluate();
 
-        return 0.0;
+        // Show output variable's chart
+        Variable score = fis.getVariable("score");
+        JFuzzyChart.get().chart(score, score.getDefuzzifier(), true);
+
+        return score.getValue();
     }
 }
