@@ -7,11 +7,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        try {
-//            FuzzyEvaluator.process("./assests/base2.dat");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        Score.process(90, 100);
+        try {
+            FuzzyEvaluator.process("./assests/base2.dat");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

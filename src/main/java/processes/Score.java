@@ -14,6 +14,8 @@ public class Score {
         if (fis == null)
             throw new IllegalArgumentException("Can't load file: '" + fileName + "'");
 
+        JFuzzyChart.get().chart(fis);
+
         // Set inputs
         fis.setVariable("offer", offer);
         fis.setVariable("customer", customer);

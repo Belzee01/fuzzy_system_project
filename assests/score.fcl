@@ -10,21 +10,21 @@ VAR_OUTPUT
 END_VAR
 
 FUZZIFY offer
-    TERM bad := (0,1) (25,1) (50,0);
-	TERM avg := (40,0) (65,1) (65,0);
-	TERM great := (60,0) (85,1) (100,1);
+    TERM bad := (0,1) (10,1) (50,0);
+	TERM avg := (25,0) (50,1) (75,0);
+	TERM great := (50,0) (90,1) (100,1);
 END_FUZZIFY
 
 FUZZIFY customer
-    TERM bad := (0,1) (25,1) (50,0);
-	TERM avg := (40,0) (65,1) (65,0);
-	TERM great := (60,0) (85,1) (100,1);
+    TERM bad := (0,1) (10,1) (50,0);
+	TERM avg := (25,0) (50,1) (75,0);
+	TERM great := (50,0) (90,1) (100,1);
 END_FUZZIFY
 
 DEFUZZIFY score
-    TERM bad := (0,1) (25,1) (50,0);
-	TERM avg := (40,0) (65,1) (65,0);
-	TERM great := (60,0) (85,1) (100,1);
+    TERM bad := (0,1) (10,1) (50,0);
+	TERM avg := (25,0) (50,1) (75,0);
+	TERM great := (50,0) (90,1) (100,1);
 	METHOD : COG;
 	DEFAULT := 0;
 END_DEFUZZIFY
@@ -38,9 +38,9 @@ RULEBLOCK No1
 	RULE 2 : IF customer IS bad and offer is avg THEN score IS avg;
 	RULE 3 : IF customer IS bad and offer is great THEN score IS bad;
 
-	RULE 4 : IF customer IS avg and offer is bad THEN score IS bad;
+	RULE 4 : IF customer IS avg and offer is bad THEN score IS avg;
     RULE 5 : IF customer IS avg and offer is avg THEN score IS great;
-    RULE 6 : IF customer IS avg and offer is great THEN score IS bad;
+    RULE 6 : IF customer IS avg and offer is great THEN score IS avg;
 
     RULE 7 : IF customer IS great and offer is bad THEN score IS bad;
     RULE 8 : IF customer IS great and offer is avg THEN score IS avg;

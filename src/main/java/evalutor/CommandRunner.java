@@ -16,6 +16,7 @@ public class CommandRunner {
     public static Integer amountOfRecords = 0;
     public static Double priceRange = 0.0;
     public static LocalDate date = LocalDate.now();
+    public static Integer score = 0;
     public static List<Platforms.PLATFORMS> platformList = new ArrayList<>();
     public static List<Tags.TAGS> tagList = new ArrayList<>();
 
@@ -43,6 +44,10 @@ public class CommandRunner {
         System.out.println("Podaj date produkcji dla gier ktore poszukujesz: ");
         String dateToParse = reader.nextLine().toLowerCase();
         date = LocalDate.parse(dateToParse);
+
+        System.out.println("Podaj wartosc srednich ocen dla gier ktorych poszukujesz: ");
+        String scoreToParse = reader.nextLine().toLowerCase();
+        score = Integer.valueOf(scoreToParse);
 
         System.out.println("Podaj ile gier wyswietlic: ");
         amountOfRecords = reader.nextInt();
