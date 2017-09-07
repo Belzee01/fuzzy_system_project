@@ -74,18 +74,20 @@ public class Game implements Comparable<Game> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(this.title + ";");
+        StringBuilder sb = new StringBuilder(" TITLE: " + this.title + "; ");
 
-        sb.append(this.price).append(";");
+        sb.append("PRICE: ").append(this.price).append("; ");
 
+        sb.append("PLATFORMS: ");
         this.platforms.getPlatform().forEach(p -> sb.append(p).append(","));
-        sb.append(";");
+        sb.append("; ");
 
+        sb.append("TAGS: ");
         this.tags.getTags().forEach(t -> sb.append(t).append(","));
-        sb.append(";");
+        sb.append("; ");
 
-        sb.append(this.score).append(";");
-        sb.append(this.date).append("\n");
+        sb.append("SCORE: ").append(this.score).append("; ");
+        sb.append("DATE: ").append(this.date);
 
         return value + " " + sb.toString();
     }
